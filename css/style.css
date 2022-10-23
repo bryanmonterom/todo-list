@@ -14,8 +14,19 @@ body{
     min-height: 100vh;
     margin: 0;
 
+    
+
 
 }
+
+html { 
+    background: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=996&t=st=1666557781~exp=1666558381~hmac=9e04cfed668b64d1d0c8ef7dd362012318477ccc58cde0347e8ab88c2991de28") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
 
 nav ul { list-style-type: none; }
 
@@ -61,6 +72,7 @@ li{
     border: 1px solid rgb(192, 192, 192);
     color: rgb(6, 111, 197);
     font-size: 25px;
+    justify-content: center;
 }
 
 .menu-items{
@@ -68,6 +80,14 @@ li{
     color: #066fc5;
     font-weight: 600;
     font-family: 'Source Sans Pro', sans-serif;
+
+
+}
+
+nav{
+    overflow-y:auto;
+    overflow-x:hidden;
+    max-height: 40%;
 }
 
 .menu-items :hover{
@@ -97,7 +117,7 @@ li{
 .badge{
     border: 1px;
     background-color: #066fc5;
-    border-radius: 30px;
+    border-radius: 50px;
     color: white;
     font-size: 14px;
     padding: 5px;
@@ -124,39 +144,117 @@ li{
 }
 
 
-.cards-container{
-    border: 1px solid red;
-    width: 100%;
-    height: 100%;
-    padding: 5px;
+
+
+.side-menu-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    color: #066fc5;
+    /* background-color: #066fc5; */
+    color: white;
+    width: 25px;
+    height: 25px;
+    align-items: center;
 }
+
+
+.side-menu-button > label:hover{
+    /* display: flex;
+    align-items: center;
+    padding: 20px;
+    text-shadow: 2px 2px 8px #919191;
+    color: #164164;
+    font-size:40px;
+    background-color: #066fc5;
+    color: white;
+    border-radius: 100%; */
+
+}
+
+#btnAdd{
+    font-size:25px;
+    padding: 25px;
+    text-align: center;
+    background-color: #066fc5;
+    border: none;
+    color: white;
+    border-radius: 70%;
+    display: inline-block;
+
+
+
+
+}
+
+
+
+
 
 .container{
     display: flex;
     flex-direction: row;
     height: 620px;
+
 }
 
 .content{
-    height: 650px;
+    height: 690px;
     /* border: 1px solid rgb(106, 0, 255); */
-    width: 1000px;
+    width: 75%;
     display: flex;
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    
+
 }
 
 .cards-container{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 620px;
+    padding: 5px;
+    justify-content: flex-start;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid rgb(247, 245, 245);
+    background-color: #f9fafa;
+    overflow-y:auto;
+    overflow-x:hidden;
+    white-space: nowrap;
+
+
+
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
 .card{
     border:1px solid rgb(221, 220, 220);
     background-color: #e1e3e4;
-    width: 760px;
-    height: 30px;
+    width: 95%;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-content: center;
