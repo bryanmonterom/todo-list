@@ -1,5 +1,9 @@
 import {ToDoList} from './ToDoList'
+import {initializeSite} from './ui'
+
 
 const todoList = new ToDoList();
 
-console.log(todoList);
+initializeSite(todoList.getAllProjects())
+
+console.log();

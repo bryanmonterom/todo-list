@@ -1,9 +1,11 @@
-export function createElement(element, className,text){
+export function createElement(element, className,text, id){
     let elementtoCreate = document.createElement(element);
     elementtoCreate.textContent = text
+    elementtoCreate.id = id
     if(className != ''){
         elementtoCreate.classList.add(className)
     }
+    
     return elementtoCreate;
 }
 

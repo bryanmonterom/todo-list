@@ -5,6 +5,12 @@ export class Task{
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.status = 0
+        this.status = false
+    }
+
+   
+    changeTaskStatus(){
+        this.status = !this.status
+        return this;
     }
 }
