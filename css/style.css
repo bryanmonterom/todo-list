@@ -1,0 +1,35 @@
+
+@font-face {
+    font-family: "Simple=Melody";
+    src: url('../fonts/Simple-Melody.ttf') format("truetype");
+}
+
+
+.header{
+    background-color: rgb(6, 111, 197);
+    height: 75px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    padding: 20px;
+    font-family: "Simple=Melody";
+
+}
+
+.logo-img{
+    width: 25px;
+    height: auto;
+    margin: 0;
+}
+
+.logo-text{
+   font-size: 25px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
