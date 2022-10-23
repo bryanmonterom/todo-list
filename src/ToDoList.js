@@ -1,44 +1,64 @@
-import {Project} from './project'
+import { Project } from './project'
+import { Task } from './task'
 
 
-// const task = new Task('Clean dishes','Clean all the dishes from the kitchen','10/22/2022','High','No notes');
-// console.log(task);
+export class ToDoList {
 
-// const defaultProject = new Projects('Default');
-// defaultProject.addTask(task);
-
-// console.log(defaultProject);
-
-
-export class ToDoList{
-
-    constructor(){
+    constructor() {
         this.projects = [];
-        this.projects.push(new Project('Home','main-projects'));
-        this.projects.push(new Project('Work','secondary-projects'));
-        this.projects.push(new Project('Today','main-projects'));
-        this.projects.push(new Project('College','secondary-projects'));
-        this.projects.push(new Project('Week','main-projects'));
+        this.projects.push(new Project('Home', 'main-projects'));
+        this.projects.push(new Project('Work', 'secondary-projects'));
+        this.projects.push(new Project('Today', 'main-projects'));
+        this.projects.push(new Project('Home Renovation', 'secondary-projects'));
+        this.projects.push(new Project('Week', 'main-projects'));
     }
 
-    addProject(project){
+    addProject(project) {
         this.projects.push(project);
         return this.projects;
     }
 
-    getAllProjects(){
+    addTask(title, description, dueDate, priority, notes,projectName){
 
-        var byName = this.projects.slice(0);
-        byName.sort(function(a,b) {
-            var x = a.type.toLowerCase();
-            var y = b.type.toLowerCase();
-            return x < y ? -1 : x > y ? 1 : 0;
-});
-        return byName;
+        let task = new Task(title,description,dueDate,priority,notes,projectName)
+        // let project = this.projects.find(a => a.title == projectName)
+        let project = this.getProjectByName(projectName);
+
+        // console.log(project.tasks);
+        // // console.log(task);
+        project.tasks.push(task);
+
+        this.resetTaskIndexes(project.tasks);
+        return task;
     }
 
-    getTasksByProject(title){
-        return this.getAllProjects().filter(a=> a.title = title).tasks
+    resetTaskIndexes(tasks){
+        let i=0;
+        tasks.forEach(element => {
+            element.setIndex = i;
+            i++;
+        });
+        return this.tasks;
+    }
+
+// getProjects(){
+//     return this.projects;
+// }
+    getAllProjects() {
+    //   this.projects = this.projects.slice(0).sort(function (a, b) {
+    //         var x = a.type.toLowerCase();
+    //         var y = b.type.toLowerCase();
+    //         return x < y ? -1 : x > y ? 1 : 0;
+    //     });
+        return this.projects;
+    }
+
+    getProjectByName(projectName){
+        return this.projects.find(a => a.title == projectName);
+    }
+
+    getTasksByProject(title) {
+        return this.projects.filter(a => a.title == title).tasks
     }
 
 }

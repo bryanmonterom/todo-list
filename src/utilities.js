@@ -2,11 +2,22 @@ export function createElement(element, className,text, id){
     let elementtoCreate = document.createElement(element);
     elementtoCreate.textContent = text
     elementtoCreate.id = id
+    // if(className != []){
+    //     className.forEach(element => {
+    //     elementtoCreate.classList.add(className)
+    //     });
+    // }
     if(className != ''){
-        elementtoCreate.classList.add(className)
+        className.split(',').forEach(element => {
+            elementtoCreate.classList.add(element)
+        });
     }
-    
+    if(id == ''){
+        elementtoCreate.classList.add(className)
+        return elementtoCreate;
+    }
     return elementtoCreate;
+
 }
 
 export function createImages(className, src){

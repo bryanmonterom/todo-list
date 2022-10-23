@@ -1,3 +1,6 @@
+import { Task } from './task'
+
+
 
 export class Project {
     constructor(title,type){
@@ -7,9 +10,40 @@ export class Project {
         this.total = this.tasks.length
     }
 
-    addTask(task){
-        this.tasks.push(task)
+    addTask(title, description, dueDate, priority, notes){
+        let task = new Task(title,description,dueDate,priority,notes,this.title)
+        this.tasks.push(task);
+        // this.resetTaskIndexes(tasks);
+        return task;
     }
+
+    resetTaskIndexes(){
+        let i=0;
+        this.tasks.forEach(element => {
+            element.index = i;
+            i++;
+        });
+        return this.tasks;
+    }
+
+    
+
+    getTasks(){
+        this.tasks.slice(0).sort(function (a,b){
+            var x = a.title.toLowerCase();
+            var y = b.title.toLowerCase();
+            return x < y ? -1 : x > y ? 1:0
+        })
+    }
+
+    getTasks(){
+        this.tasks.slice(0).sort(function (a,b){
+            var x = a.title.toLowerCase();
+            var y = b.title.toLowerCase();
+            return x < y ? -1 : x > y ? 1:0
+        })
+    }
+
 
     removeTask(task){
 
