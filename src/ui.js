@@ -1,4 +1,6 @@
 import * as utilities from './utilities'
+import { ToDoList } from './ToDoList' 
+
 
 
 const projectsNavBar= (projectType, projects)=>{
@@ -12,7 +14,7 @@ const projectsNavBar= (projectType, projects)=>{
             li.classList.add('active')
         }
         let labelName = utilities.createElement('label','menu',element.title,'')
-        let badge = utilities.createElement('label',`badge`,element.total,`badge-${element.title}`)
+        let badge = utilities.createElement('label',`badge`,element.getTotalTasks(),`badge-${element.title}`)
         li.appendChild(labelName);
         li.appendChild(badge);
         ul.appendChild(li);
@@ -22,7 +24,6 @@ const projectsNavBar= (projectType, projects)=>{
 }
  
 export const  loadAlltasks = (tasks)=>{
-    console.log(tasks);
     let cardContainer = document.getElementById('cards-container');
 
     
@@ -30,9 +31,8 @@ export const  loadAlltasks = (tasks)=>{
 
         // cardContainer.innerHTML = '';
         let card = utilities.createElement('div',`card,${element.priority}`,'');
-        card.
+        
 
-        console.log(card)
         card.setAttribute("data-project",element.project)
         card.setAttribute("data-index",element.getIndex)
 
@@ -55,6 +55,7 @@ export const  loadAlltasks = (tasks)=>{
         button.value ="Details"
         let iconEdit = utilities.createElement('i','fa-solid,fa-pen-to-square')
         let iconTrash = utilities.createElement('i','fa-solid,fa-trash')
+        // iconTrash.addEventListener('click', removeTask);
         carditemsTwo.appendChild(button);
         carditemsTwo.appendChild(date);
         carditemsTwo.appendChild(iconEdit);
@@ -79,6 +80,7 @@ export function initializeSite (projects){
     });
 
 }
+
 
 
 {/* <div class="card high">

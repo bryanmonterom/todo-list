@@ -13,8 +13,18 @@ todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', '
 initializeSite(todoList.getAllProjects())
 
 
+const removeTask=(e) =>{
+    let card  = e.target.parentNode.parentNode;
+    todoList.removeTask(card.getAttribute("data-project"),card.getAttribute("data-index"))
+    card.remove();
+    }
+    
+let iconTrash = document.getElementsByClassName('fa-trash')[0];
+console.log(iconTrash)
+iconTrash.addEventListener('click', removeTask);
 
 
 
 
-// console.log();
+    
+
