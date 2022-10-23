@@ -7,6 +7,7 @@ const todoList = new Logic();
 todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'No notes','Home')
 todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'No notes','Home')
 todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Home')
+todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Home')
 
 // initializeSite(todoList.getProjects())
 initializeSite(todoList.getAllProjects())

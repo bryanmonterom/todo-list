@@ -8,9 +8,14 @@ export class ToDoList {
         this.projects = [];
         this.projects.push(new Project('Home', 'main-projects'));
         this.projects.push(new Project('Work', 'secondary-projects'));
+        this.projects.push(new Project('College', 'secondary-projects'));
+        this
+
+
         this.projects.push(new Project('Today', 'main-projects'));
         this.projects.push(new Project('Home Renovation', 'secondary-projects'));
         this.projects.push(new Project('Week', 'main-projects'));
+        
     }
 
     addProject(project) {
@@ -21,13 +26,8 @@ export class ToDoList {
     addTask(title, description, dueDate, priority, notes,projectName){
 
         let task = new Task(title,description,dueDate,priority,notes,projectName)
-        // let project = this.projects.find(a => a.title == projectName)
         let project = this.getProjectByName(projectName);
-
-        // console.log(project.tasks);
-        // // console.log(task);
         project.tasks.push(task);
-
         this.resetTaskIndexes(project.tasks);
         return task;
     }
@@ -41,9 +41,10 @@ export class ToDoList {
         return this.tasks;
     }
 
-// getProjects(){
-//     return this.projects;
-// }
+    removeTask(){
+        
+    }
+
     getAllProjects() {
     //   this.projects = this.projects.slice(0).sort(function (a, b) {
     //         var x = a.type.toLowerCase();

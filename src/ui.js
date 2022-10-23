@@ -30,6 +30,7 @@ export const  loadAlltasks = (tasks)=>{
 
         // cardContainer.innerHTML = '';
         let card = utilities.createElement('div',`card,${element.priority}`,'');
+        card.
 
         console.log(card)
         card.setAttribute("data-project",element.project)

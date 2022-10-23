@@ -13,10 +13,13 @@ export class Project {
     addTask(title, description, dueDate, priority, notes){
         let task = new Task(title,description,dueDate,priority,notes,this.title)
         this.tasks.push(task);
-        // this.resetTaskIndexes(tasks);
+        this.resetTaskIndexes(tasks);
         return task;
     }
 
+    getTotalTasks (){
+       return this.tasks.length;
+    }
     resetTaskIndexes(){
         let i=0;
         this.tasks.forEach(element => {
