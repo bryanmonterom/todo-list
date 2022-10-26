@@ -1,23 +1,21 @@
 import { Project } from './project'
 import { Task } from './task'
+import * as ui from './ui'
+
 
 
 export class ToDoList {
 
     constructor() {
         this.projects = [];
-        this.projects.push(new Project('Home', 'main-projects'));
-        this.projects.push(new Project('Work', 'secondary-projects'));
-        this.projects.push(new Project('College', 'secondary-projects'));
-        this
-
-
-        this.projects.push(new Project('Today', 'main-projects'));
-        this.projects.push(new Project('Home Renovation', 'secondary-projects'));
-        this.projects.push(new Project('Week', 'main-projects'));
-        
+        this.projects.push(new Project('Personal', 'main-projects'));
+        this.projects.push(new Project('Work', 'main-projects'));
+        this.projects.push(new Project('College', 'main-projects'));
+        this.projects.push(new Project('Learn React', 'secondary-projects'));
+        this.projects.push(new Project('Odin Project', 'secondary-projects'));
+        this.projects.push(new Project('Week', 'secondary-projects'));
+        this.currentProject = "Personal";
     }
-
     addProject(project) {
         this.projects.push(project);
         return this.projects;
@@ -28,25 +26,15 @@ export class ToDoList {
         let task = new Task(title,description,dueDate,priority,notes,projectName)
         let project = this.getProjectByName(projectName);
         project.tasks.push(task);
-        this.resetTaskIndexes(project.tasks);
-        return task;
-    }
-
-    resetTaskIndexes(tasks){
-        let i=0;
-        tasks.forEach(element => {
-            element.setIndex = i;
-            i++;
-        });
-        return this.tasks;
+        return project.tasks;
     }
 
     removeTask(project, taskId){
-        this.projects.find(a => a.title == project).tasks.splice(taskId,1)
-        
-        // tasks.find(b=> b.getIndex == taskId).remove();
-        this.resetTaskIndexes(this.projects.find(a => a.title == project).tasks);
-        console.log(this.projects.find(a => a.title == project))
+
+       let pjct =  this.projects.find(a => a.title == project)
+       pjct.tasks.splice(taskId,1);
+        ui.resetBadge(pjct)
+        removeBtnEventListener();
     }
 
     getAllProjects() {
@@ -67,3 +55,54 @@ export class ToDoList {
     }
 
 }
+
+
+
+const todoList = new ToDoList();
+
+todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'No notes','Personal')
+todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'No notes','Personal')
+todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Personal')
+todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Personal')
+
+
+todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'No notes','Work')
+todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'No notes','Work')
+todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','College')
+todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium', 'No notes','College')
+// initializeSite(todoList.getProjects())
+
+
+
+
+export const removeTaskFromProject=(e) =>{
+    let card  = e.target.parentNode.parentNode;
+    todoList.removeTask(card.getAttribute("data-project"),card.getAttribute("data-index"))
+    // card.remove();
+    }
+
+
+    function removeBtnEventListener(){
+        for (let item of document.getElementsByClassName('fa-trash')) {
+            item.addEventListener('click', removeTaskFromProject)
+        }
+    }
+
+    function detailsBtnEventListener(){
+        for (let item of document.getElementsByClassName('btn-details')) {
+            item.addEventListener('click', showModal)
+        }
+    }
+
+    function showModal(e){
+     
+
+    let card  = e.target.parentNode.parentNode;
+    ui.showModal(e)
+    // modal.textContent += card;
+
+}
+
+    ui.initializeSite(todoList)
+    removeBtnEventListener();
+    detailsBtnEventListener();

@@ -1,5 +1,7 @@
 import * as utilities from './utilities'
 import { ToDoList } from './ToDoList' 
+import { removeTask } from './ToDoList' 
+
 
 
 
@@ -24,17 +26,17 @@ const projectsNavBar= (projectType, projects)=>{
 }
  
 export const  loadAlltasks = (tasks)=>{
-    let cardContainer = document.getElementById('cards-container');
 
-    
-    tasks.forEach(element => {
+    let cardContainer = document.getElementById('cards-container');
+    cardContainer.innerHTML = "";
+    tasks.forEach((element,i) => {
 
         // cardContainer.innerHTML = '';
         let card = utilities.createElement('div',`card,${element.priority}`,'');
-        
-
         card.setAttribute("data-project",element.project)
-        card.setAttribute("data-index",element.getIndex)
+        // card.setAttribute("data-index",element.getIndex)
+        card.setAttribute("data-index",i)
+
 
 
         let carditemsOne = utilities.createElement('div','card-items');
@@ -50,12 +52,13 @@ export const  loadAlltasks = (tasks)=>{
 
         let carditemsTwo = utilities.createElement('div','card-items');
         let date = utilities.createElement('label','',element.dueDate)
-        let button = utilities.createElement('input','')
+        let button = utilities.createElement('input','btn-details')
         button.type="button";
         button.value ="Details"
+        button.addEventListener('click',function(e){showModal()})
         let iconEdit = utilities.createElement('i','fa-solid,fa-pen-to-square')
         let iconTrash = utilities.createElement('i','fa-solid,fa-trash')
-        // iconTrash.addEventListener('click', removeTask);
+        // iconTrash.addEventListener('click',function(e){removeTask(e)});
         carditemsTwo.appendChild(button);
         carditemsTwo.appendChild(date);
         carditemsTwo.appendChild(iconEdit);
@@ -65,33 +68,87 @@ export const  loadAlltasks = (tasks)=>{
         cardContainer.appendChild(card);
 
     });
+}
+
+export const  loadAllTasksByProject = (tasks)=>{
+    let cardContainer = document.getElementById('cards-container');
+    cardContainer.innerHTML = "";
+    tasks.forEach((element,i) => {
+
+        // cardContainer.innerHTML = '';
+        let card = utilities.createElement('div',`card,${element.priority}`,'');
+        
+
+        card.setAttribute("data-project",element.project)
+        // card.setAttribute("data-index",element.getIndex)
+        card.setAttribute("data-index",i)
 
 
+
+        let carditemsOne = utilities.createElement('div','card-items');
+
+        let cbox = utilities.createElement('input','','')
+
+        cbox.type="checkbox";
+        cbox.checked = element.status;
+
+        let title = utilities.createElement('label','card-text',element.title)
+        carditemsOne.appendChild(cbox);
+        carditemsOne.appendChild(title);
+
+        let carditemsTwo = utilities.createElement('div','card-items');
+        let date = utilities.createElement('label','',element.dueDate)
+        let button = utilities.createElement('input','btn-details')
+        button.type="button";
+        button.value ="Details"
+        // button.addEventListener('click','kshowModal')
+        let iconEdit = utilities.createElement('i','fa-solid,fa-pen-to-square')
+        let iconTrash = utilities.createElement('i','fa-solid,fa-trash')
+        // iconTrash.addEventListener('click',(e)=> {removeTask(e)});
+        carditemsTwo.appendChild(button);
+        carditemsTwo.appendChild(date);
+        carditemsTwo.appendChild(iconEdit);
+        carditemsTwo.appendChild(iconTrash);
+        card.appendChild(carditemsOne);
+        card.appendChild(carditemsTwo);
+        cardContainer.appendChild(card);
+
+    });
 }
 
 
-export function initializeSite (projects){
 
+
+export function initializeSite (todo){
+
+    let projects = todo.getAllProjects();
     projectsNavBar('main-projects',projects);
     projectsNavBar('secondary-projects',projects);
-
-    projects.forEach(element => {
+    projects.filter(a=> a.title == todo.currentProject).forEach(element => {
+    console.log(element);
          loadAlltasks(element.tasks);
     });
 
 }
 
 
+//To update badge when a task is added o removed
+export function resetBadge(projectName){
+document.getElementById(`badge-${projectName.title}`).textContent  = projectName.tasks.length
+loadAllTasksByProject(projectName.tasks)
+}
 
-{/* <div class="card high">
-<div class="card-items">
-    <input type="checkbox" name="" id="">
-    <label>Task 1</label>
-</div>
-<div class="card-items">
-    <input type="button" value="Details">
-    <label>10/23/2022</label>
-    <i class="fa-solid fa-pen-to-square"></i>
-    <i class="fa-solid fa-trash"></i>
-</div>
-</div> */}
+export function showModal(e){
+    var modal = document.getElementById('myModal');
+    modal.style.display="block";
+
+    span.onclick = function(){
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event){
+        if(event.target == modal){
+            modal.style.display = "none"
+        }
+    }
+}

@@ -16,6 +16,32 @@
 
 <body>
     <div class="content" id="content">
+
+        <!-- Details modal -->
+        <div id="myModal"  class="modal">
+            <div class="modal-content">
+                <span class="close">Close</span>
+                <h1 id="detail-taskTitle">Title</h1>
+                <div class="modal-dtl-group">
+                    <label id="" class="modal-bold">Project</label>
+                    <label id="detail-taskProject" class="modal-nonbold">Home</label>
+                </div>
+                <div class="modal-dtl-group">
+                    <label id="" class="modal-bold">Priority</label>
+                    <label id="detail-taskPriority" class="modal-nonbold">Low</label>
+                </div>
+                <div class="modal-dtl-group">
+                    <label id="" class="modal-bold">Priority</label>
+                    <label id="detail-taskDate" class="modal-nonbold">Ocotber 23, 2022</label>
+                </div>
+                <div class="modal-dtl-group">
+                    <label id="" class="modal-bold">Details</label>
+                    <label id="detail-taskDetails" class="modal-nonbold">Here the details</label>
+                </div>
+            </div>
+        </div>
+                <!-- Details modal -->
+
         <header class="header">
             <div class="logo">
                 <img class="logo-img" src="./img/taskLogo.png" alt="">
@@ -41,6 +67,16 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        var btn = document.getElementById("myBtn")
+        var span = document.getElementsByClassName("close")[0]
+
+        // btn.onclick=function(){
+        //     modal.style.display="block";
+        // }
+
+        
+        </script>
 </body>
 
 </html>
