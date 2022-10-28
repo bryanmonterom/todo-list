@@ -125,20 +125,23 @@ export function initializeSite (todo){
     projectsNavBar('main-projects',projects);
     projectsNavBar('secondary-projects',projects);
     projects.filter(a=> a.title == todo.currentProject).forEach(element => {
-    console.log(element);
-         loadAlltasks(element.tasks);
+        loadAlltasks(element.tasks);
+
     });
 
 }
 
 
 //To update badge when a task is added o removed
-export function resetBadge(projectName){
-document.getElementById(`badge-${projectName.title}`).textContent  = projectName.tasks.length
-loadAllTasksByProject(projectName.tasks)
+export function resetBadge(tasks,projectName){
+    console.log(tasks.length);
+document.getElementById(`badge-${projectName}`).textContent  = tasks.length
+loadAllTasksByProject(tasks)
 }
 
 export function showModal(e){
+    // console.log(e);
+    populateDetailsModal(e);
     var modal = document.getElementById('myModal');
     modal.style.display="block";
 
@@ -152,3 +155,35 @@ export function showModal(e){
         }
     }
 }
+
+export function populateDetailsModal(task){
+    document.getElementById('detail-taskTitle').textContent = task.project
+    document.getElementById('detail-taskProject').textContent = task.title
+    document.getElementById('detail-taskDate').textContent = task.dueDate
+    document.getElementById('detail-taskDetails').textContent = task.description
+}
+
+
+function addEventsListener(){
+    document.getElementById()
+}
+
+function addTaskEventListener(){
+    document.getElementById('formTask').addEventListener(submit,AddTask)
+}
+
+export function AddTask(e,currentProject){
+    resetBadge(e,currentProject)
+    // console.log(formProps);
+
+}
+
+
+// this.title = title;
+// this.description = description;
+// this.dueDate = dueDate;
+// this.priority = priority;
+// this.notes = notes;
+// this.status = false
+// this.project = project;
+// }

@@ -21,9 +21,9 @@ export class ToDoList {
         return this.projects;
     }
 
-    addTask(title, description, dueDate, priority, notes,projectName){
+    addTask(title, description, dueDate, priority, projectName){
 
-        let task = new Task(title,description,dueDate,priority,notes,projectName)
+        let task = new Task(title,description,dueDate,priority,projectName)
         let project = this.getProjectByName(projectName);
         project.tasks.push(task);
         return project.tasks;
@@ -33,10 +33,18 @@ export class ToDoList {
 
        let pjct =  this.projects.find(a => a.title == project)
        pjct.tasks.splice(taskId,1);
-        ui.resetBadge(pjct)
+        ui.resetBadge(pjct.tasks, project)
         removeBtnEventListener();
     }
 
+    // getTask(project, taskId){
+
+    //     let task =  this.projects.find(a => a.title == project).tasks[taskId]
+    //     // pjct.tasks.splice(taskId,1);
+    //     //  ui.resetBadge(pjct)
+    //     //  removeBtnEventListener();.
+    //     return task;
+    //  }
     getAllProjects() {
     //   this.projects = this.projects.slice(0).sort(function (a, b) {
     //         var x = a.type.toLowerCase();
@@ -50,8 +58,11 @@ export class ToDoList {
         return this.projects.find(a => a.title == projectName);
     }
 
-    getTasksByProject(title) {
-        return this.projects.filter(a => a.title == title).tasks
+    getTasksByProject(title,taskId) {
+        let pjct =this.projects.find(a => a.title == title).tasks[taskId]
+
+        return pjct;
+        // .tasks[taskId]
     }
 
 }
@@ -60,16 +71,16 @@ export class ToDoList {
 
 const todoList = new ToDoList();
 
-todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'No notes','Personal')
-todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'No notes','Personal')
-todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Personal')
-todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium', 'No notes','Personal')
+todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'Personal')
+todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'Personal')
+todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium','Personal')
+todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium','Personal')
 
 
-todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High', 'No notes','Work')
-todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low', 'No notes','Work')
-todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'No notes','College')
-todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium', 'No notes','College')
+todoList.addTask('Test TASK 1', 'This is just a test', '10/23/2022', 'High','Work')
+todoList.addTask('Test TASK 2', 'This is just a test', '10/23/2022', 'Low','Work')
+todoList.addTask('Test TASK 3', 'This is just a test', '10/23/2022', 'Medium', 'College')
+todoList.addTask('Test TASK 4', 'This is just a test', '10/23/2022', 'Medium', 'College')
 // initializeSite(todoList.getProjects())
 
 
@@ -94,15 +105,35 @@ export const removeTaskFromProject=(e) =>{
         }
     }
 
+    function addTaskEventListener(){
+        
+        document.getElementById('formTask').addEventListener('submit',(e)=>{
+            e.preventDefault();
+            AddTask(e);
+        })
+    }
+
+    function AddTask(e){
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData);
+        let tasks = todoList.addTask(formProps.taskName, formProps.taskDetails, formProps.taskDueDate, formProps.priority, todoList.currentProject)
+        ui.AddTask(tasks, todoList.currentProject)
+        }
+        
+
     function showModal(e){
-     
-
     let card  = e.target.parentNode.parentNode;
-    ui.showModal(e)
-    // modal.textContent += card;
 
+    let task = todoList.getTasksByProject(card.getAttribute("data-project"),card.getAttribute("data-index"))
+    // console.log(task);
+
+    ui.showModal(task)
+    // modal.textContent += card;
 }
+
+
 
     ui.initializeSite(todoList)
     removeBtnEventListener();
     detailsBtnEventListener();
+    addTaskEventListener();

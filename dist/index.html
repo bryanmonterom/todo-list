@@ -18,9 +18,12 @@
     <div class="content" id="content">
 
         <!-- Details modal -->
-        <div id="myModal"  class="modal">
+        <!-- <div id="myModal"  class="modal">
             <div class="modal-content">
-                <span class="close">Close</span>
+                
+                <div class="close-button">
+                    <span class="close">X</span>
+                </div>
                 <h1 id="detail-taskTitle">Title</h1>
                 <div class="modal-dtl-group">
                     <label id="" class="modal-bold">Project</label>
@@ -37,6 +40,37 @@
                 <div class="modal-dtl-group">
                     <label id="" class="modal-bold">Details</label>
                     <label id="detail-taskDetails" class="modal-nonbold">Here the details</label>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="create-modal" class="modal">
+            <div class="modal-content">
+                <div class="create-header">
+                    <span class="create-title">Create new ..</span>
+                    <span class="close">X</span>
+                </div>
+                <div class="modal-container">
+                <div class="side-menu-modal">
+                    <ul id="" class="menu-items">
+                        <li id="" class="menu-item">
+                            <label id="" class="">Task</label>
+                        </li>
+                        <li id="" class="menu-item">
+                            <label id="" class="menu">Project</label>
+                        </li>
+                        </ul>
+                </div>
+                <form class="form-modal" id="formTask">
+                <input type="text" placeholder="Title: Pay bills" name="taskName" id="taskName">
+                <input type="text" placeholder="Details: eg internet, phone, rent" name="taskDetails" id="taskDetails">
+                <input type="date" placeholder="Due date" name="taskDueDate" id="taskDueDate">
+                <input type="radio" name="priority" id="priority" value="High" >
+                <input type="radio" name="priority" id="priority" value="Low">
+                <input type="radio" name="priority" id="priority" value="Medium">
+                <input type="submit" value="Add task">
+                </form>
                 </div>
             </div>
         </div>
