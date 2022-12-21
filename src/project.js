@@ -1,5 +1,4 @@
-import { Task } from './task'
-import {initializeSite} from './ui'
+
 
 
 
@@ -44,9 +43,6 @@ export class Project {
     }
 
 
-    removeTask(task){
-
-        // do something
-    }
+  
 }
 

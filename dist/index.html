@@ -18,12 +18,14 @@
     <div class="content" id="content">
 
         <!-- Details modal -->
-        <!-- <div id="myModal"  class="modal">
+        <div id="myModal"  class="modal">
             <div class="modal-content">
-                
-                <div class="close-button">
-                    <span class="close">X</span>
+                <div class="create-header">
+                    <span class="create-title">Details</span>
+                    <span  id="closeAddForm" class="close">X</span>
                 </div>
+                <div class="detail-body">
+
                 <h1 id="detail-taskTitle">Title</h1>
                 <div class="modal-dtl-group">
                     <label id="" class="modal-bold">Project</label>
@@ -42,39 +44,120 @@
                     <label id="detail-taskDetails" class="modal-nonbold">Here the details</label>
                 </div>
             </div>
-        </div> -->
+        </div>
+    </div>
 
+         <!-- Details modal -->
 
-        <div class="create-modal" class="modal">
+        <!-- Add modal -->
+        <div id="addForm" class="create-modal modal">
             <div class="modal-content">
                 <div class="create-header">
                     <span class="create-title">Create new ..</span>
-                    <span class="close">X</span>
+                    <span  id="closeAddForm" class="close">X</span>
                 </div>
                 <div class="modal-container">
-                <div class="side-menu-modal">
-                    <ul id="" class="menu-items">
-                        <li id="" class="menu-item">
-                            <label id="" class="">Task</label>
-                        </li>
-                        <li id="" class="menu-item">
-                            <label id="" class="menu">Project</label>
-                        </li>
-                        </ul>
-                </div>
-                <form class="form-modal" id="formTask">
-                <input type="text" placeholder="Title: Pay bills" name="taskName" id="taskName">
-                <input type="text" placeholder="Details: eg internet, phone, rent" name="taskDetails" id="taskDetails">
-                <input type="date" placeholder="Due date" name="taskDueDate" id="taskDueDate">
-                <input type="radio" name="priority" id="priority" value="High" >
-                <input type="radio" name="priority" id="priority" value="Low">
-                <input type="radio" name="priority" id="priority" value="Medium">
-                <input type="submit" value="Add task">
-                </form>
+                    <div class="side-menu-modal">
+                        <ul id="" class="menu-items">
+                            <li id="" class="menu-item">
+                                <label id="tasksForm" class="" data-menu="Task">Task</label>
+                            </li>
+                            <li id="" class="menu-item">
+                                <label id="projectsForm" class="menu" data-menu="Project">Project</label>
+                            </li>
+                            </ul>
+                    </div>
+                    <form class="form-modal" id="formTask">
+                    <input type="text"  id="formType" name="formType" value="task" hidden>
+                    <input type="text" class="full" placeholder="Title: Pay bills" name="taskName" id="taskName">
+                    <textarea name="text" class="full textarea" placeholder="Details: eg internet, phone, rent" cols="40" rows="5" id="taskDetails"></textarea>
+                    <div class="form-group">
+                        <label class="form-field-title">Due Date:</label>
+                        <input type="date" class="" placeholder="Due date" name="taskDueDate" id="taskDueDate">
+                    </div>
+                    <div class="form-group between">
+                        <div class="form-fields" >
+                            <div class="form-priority">
+                                <div class="form-priority-title">
+                                    <label class="form-field-title">Priority:</label>
+                                   </div>
+                                   <div class="">
+                                    <input type="radio" id="priority-Low" name="priority" value="Low" >
+                                    <label for="priority-Low" class= "priority low" >Low</label>
+                                    <input type="radio" id="priority-Medium" name="priority" value="Medium" >
+                                    <label for="priority-Medium" class= "priority medium" >Medium</label>
+                                    <input type="radio" class= "" id="priority-High" name="priority" value="High" >
+                                    <label for="priority-High" class="priority high" >High</label>
+                                </div>
+                            </div>
+                        </div>
+                      <div class="form-btn">
+                        <input type="submit" value="Add task">
+                      </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-                <!-- Details modal -->
+        <!-- Add modal -->
+
+        <!-- Modify  modal -->
+        <div id="modifyForm" class="create-modal modal">
+            <div class="modal-content">
+                <div class="create-header">
+                    <span class="create-title">Modify Task ...</span>
+                    <span  id="closeAddForm" class="close">X</span>
+                </div>
+                <div class="modal-container">
+                    <form class="form-modal" id="formModifyTask">
+                    <input type="text"  id="mformType" name="mformType" value="modifytask" hidden>
+
+                    <input type="text"  id="mprojectName" name="mprojectName" value="" hidden>
+                    <input type="text"  id="mindex" name="mindex" value="" hidden>
+
+
+
+                    <input type="text" class="full" placeholder="Title: Pay bills" name="mtaskName" id="mtaskName">
+                    <textarea name="text" class="full textarea" placeholder="Details: eg internet, phone, rent" cols="40" rows="5" id="mtaskDetails"></textarea>
+                    <div class="form-group">
+                        <label class="form-field-title">Due Date:</label>
+                        <input type="date" class="" placeholder="Due date" name="mtaskDueDate" id="mtaskDueDate">
+                    </div>
+                    <div class="form-group between">
+                        <div class="form-fields" >
+                            <div class="form-priority">
+                                <div class="form-priority-title">
+                                    <label class="form-field-title">Priority:</label>
+                                   </div>
+                                   <div class="">
+
+                                    <input type="radio" id="mpriority-Low" name="mpriority"  value="Low" >
+
+                                    <label for="priority-Low" class= "priority low" >Low</label>
+
+                                    <input type="radio" id="mpriority-Medium" name="mpriority" value="Medium" >
+
+                                    <label for="priority-Medium" class= "priority medium" >Medium</label>
+
+                                    <input type="radio"  id="mpriority-High" name="mpriority" value="High" >
+
+                                    <label for="priority-High" class="priority high" >High</label>
+                                </div>
+                            </div>
+                        </div>
+                      <div class="form-btn">
+                        <input type="submit" value="Modify task">
+                      </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modify  modal -->
+
+        
+        
+        
 
         <header class="header">
             <div class="logo">
@@ -83,17 +166,21 @@
             </div>
         </header>
         <div class="container">
-            <aside class="side-menu">
+
+                <aside class="side-menu" id="sidebar-menu">
+
                 <nav id="main-projects">
                 </nav>
                 <label class="menu-item">Projects</label>
                 <nav id="secondary-projects">
                 </nav>
                 <div  class="side-menu-button">
-                   <input type="button" id= "btnAdd" value="+"></label>
+                   <input type="button" id= "btnAdd" value="Add new ..."></label>
                     <!-- <i id="btnAdd" class="fa-solid fa-circle-plus fa-2xl"></i> -->
                 </div>
             </aside>
+            <div class="overlay"></div>
+
             <section id="cards-container" class="cards-container">
 
             </section>
@@ -102,8 +189,8 @@
 
     <script src="main.js"></script>
     <script>
-        var btn = document.getElementById("myBtn")
-        var span = document.getElementsByClassName("close")[0]
+        // var btn = document.getElementById("myBtn")
+        // var span = document.getElementsByClassName("close")[0]
 
         // btn.onclick=function(){
         //     modal.style.display="block";
