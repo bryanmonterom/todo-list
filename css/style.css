@@ -4,6 +4,7 @@
     src: url('../fonts/Simple-Melody.ttf') format("truetype");
 }
 
+
 body{
 
     display: flex;
@@ -13,9 +14,7 @@ body{
     -webkit-align-items: center;
     min-height: 100vh;
     margin: 0;
-
-    
-
+    font-family: 'Source Sans Pro', sans-serif;
 
 }
 
@@ -64,7 +63,7 @@ li{
 }
 .side-menu{
     height: 620px;
-    width: 250px;
+    width: 100;
     background-color: rgb(222, 222, 222);
     display: flex;
     flex-direction: column;
@@ -118,7 +117,7 @@ nav{
 .badge{
     border: 1px;
     background-color: #066fc5;
-    border-radius: 50px;
+    border-radius: 100%;
     color: white;
     font-size: 14px;
     padding: 5px;
@@ -155,38 +154,23 @@ nav{
     color: #066fc5;
     /* background-color: #066fc5; */
     color: white;
-    width: 25px;
-    height: 25px;
+    width:  75%;
     align-items: center;
 }
 
 
-.side-menu-button > label:hover{
-    /* display: flex;
-    align-items: center;
-    padding: 20px;
-    text-shadow: 2px 2px 8px #919191;
-    color: #164164;
-    font-size:40px;
-    background-color: #066fc5;
-    color: white;
-    border-radius: 100%; */
 
-}
 
 #btnAdd{
-    font-size:25px;
-    padding: 25px;
+    font-size:15px;
+    font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
     background-color: #066fc5;
     border: none;
     color: white;
-    border-radius: 70%;
+    width:  100%;
+    height: 100%;
     display: inline-block;
-
-
-
-
 }
 
 
@@ -198,6 +182,7 @@ nav{
     flex-direction: row;
     height: 620px;
 
+
 }
 
 .content{
@@ -207,9 +192,7 @@ nav{
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-    
-
+    max-width:1077px ;
 }
 
 .cards-container{
@@ -226,10 +209,9 @@ nav{
     overflow-y:auto;
     overflow-x:hidden;
     white-space: nowrap;
-
-
-
+    flex-wrap: wrap;
 }
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -255,13 +237,13 @@ nav{
     border:1px solid rgb(221, 220, 220);
     background-color: #e1e3e4;
     width: 95%;
-    height: 40px;
+    padding: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
     border-radius: 2px;
     margin-top: 5px;
-    min-width: 459px;
 }
 
 
@@ -272,12 +254,19 @@ nav{
 
 .card-items{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    gap: 10px;
     width: 50%;
 }
+
+@media screen and (max-width: 600px){
+    .card{
+       flex-direction: column;
+    }
+ }
+
 
 .High{
     border-left: 5px solid red;
@@ -323,7 +312,7 @@ nav{
 }
 
 .modal{
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -346,22 +335,21 @@ nav{
     font-size: 25px;
     display: flex;
     flex-direction: column;
+    padding: 0;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 
 .side-menu-modal{
-    height: 100%;
     width: 25%;
     background-color: rgb(222, 222, 222);
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 5px;
     border: 1px solid rgb(192, 192, 192);
     color: rgb(6, 111, 197);
     font-size: 25px;
-    justify-content: flex-start;
+    max-width: 122px;
 }
 
 .modal-container{
@@ -388,6 +376,7 @@ nav{
     display: flex;
     flex-direction: column;
     padding: 0;
+    font-size: 15px;
 }
 
 .create-header{
@@ -403,6 +392,7 @@ font-family: "Simple-Melody";
 
 .create-title{
     color: white;
+    font-size: 25px;
     }
 .close:hover,
 .close:focus{
@@ -421,4 +411,201 @@ font-family: "Simple-Melody";
     display: flex;
     align-items: flex-start;
     align-content: flex-start;
+}
+
+.form-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 250px;
+    background-color: white;
+
+}
+
+.form-modal > input , textarea{
+border: 0;
+padding: 10px;
+}
+
+.form-modal > input:focus, textarea:focus{
+    outline: none;
+    }
+
+
+.textarea{
+    height: 35%;
+}
+
+
+.form-group{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /* gap: 5px; */
+    flex-wrap: wrap;
+    align-content: center;
+    justify-items: center;
+}
+
+.form-field-title{
+    width: 60px;
+}
+
+.form-group > input{
+    color: #066fc5;
+    
+}
+
+.between{
+    justify-content: space-between;
+    /* padding: 5px; */
+}
+
+.priority{
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.low{
+    color: #03721a;
+    border-color: #03721a;
+}
+
+input[type="date"]{
+    height: 25px;
+    border-radius: 2px;
+    border-color: #066fc5;
+
+}
+
+
+.low:hover
+{
+    color: #ffffff;
+    background-color: #03721a;
+    border-color: #03721a;
+}
+
+.medium{
+    color: #af8a06;
+    border-color: #af8a06;
+
+}
+
+.medium:hover
+{
+    color: #ffffff;
+    background-color: #af8a06;
+}
+
+.high:hover
+{
+    color: #ffffff;
+    background-color: #e94e4e;
+}
+
+
+.high{
+    color: #e94e4e;
+    border-color: #e94e4e;
+
+}
+
+.form-priority{
+    display: flex;
+}
+
+.form-priority-title{
+    width: 60px;
+}
+
+
+
+input[type="radio"] {
+    display: none;
+  }
+  
+
+input[type="radio"]:checked+ label.high {
+    background-color: #e94e4e;
+    color: #ffffff;
+  }
+
+  input[type="radio"]:checked+ label.low {
+    color: #ffffff;
+    background-color: #03721a;
+    border-color: #03721a;
+  }
+
+  input[type="radio"]:checked+ label.medium {
+    color: #ffffff;
+    background-color: #af8a06;
+  }
+
+  input[type="submit"] {
+    color: #03721a;
+    background-color: #ffff;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+
+  input[type="submit"]:hover
+{
+    color: #ffffff;
+    background-color: #03721a;
+    border-color: #03721a;
+}
+
+
+.done  input[type="button"]{
+    color: gray;
+    font-style: oblique;
+    border-color: gray;
+}
+
+.done {
+    color: gray;
+    font-style: oblique;
+    border-color: #03721a;
+}
+
+
+.detail-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    padding: 10px;
+}
+
+h1{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    min-height: 100vh;
+  }
+
+
+
+  /* sda */
+
+
+
+@media screen and (max-width: 750px) {
+  #sidebar-menu {
+    display: none;
+  }
+  #hamburger-menu {
+    display: inline;
+  }
 }
